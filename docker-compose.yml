@@ -1,6 +1,16 @@
 version: "3"
 
 services:
+  hermes:
+    build: .
+    ports:
+      - 9999:9999
+      - 8000:8000
+    environment:
+      DATABASE_PASSWORD: postgres
+    depends_on:
+      - postgres
+
   postgres:
     image: postgres:14.5-alpine
     restart: always
