@@ -20,3 +20,4 @@ workflows:
           filters:
             branches:
               only: feature/first-version
+
