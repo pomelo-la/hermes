@@ -3,6 +3,7 @@ FROM golang:1.18
 # Install Node
 
 # Install envsubst to build config.hcl and credentials file
+RUN apt get update
 RUN apt install gettext-base
 
 ENV NODE_VERSION=16.13.0
