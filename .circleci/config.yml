@@ -17,6 +17,7 @@ workflows:
           skip-when-tags-exist: false
           create-repo: true
           dockerfile: Dockerfile
+          tag: $(echo $CIRCLE_SHA1 | cut -c -7)
           filters:
             branches:
               only: feature/first-version
