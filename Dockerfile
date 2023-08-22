@@ -31,5 +31,6 @@ COPY . .
 # Build
 
 RUN make build
+RUN ["chmod", "+x", "./entrypoint.sh"]
 
 CMD [ "./entrypoint.sh" ]
