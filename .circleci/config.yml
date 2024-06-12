@@ -1,0 +1,23 @@
+version: 2.1
+orbs:
+  aws-ecr: circleci/aws-ecr@7.0.0
+
+workflows:
+  build-and-push:
+    jobs:
+      - aws-ecr/build-and-push-image:
+          name: build-and-push
+          context:
+            - pomelo-infra
+          account-url: AWS_ECR_ACCOUNT_URL
+          aws-access-key-id: AWS_ACCESS_KEY_ID
+          aws-secret-access-key: AWS_SECRET_ACCESS_KEY
+          repo: ${CIRCLE_PROJECT_REPONAME}
+          region: AWS_DEFAULT_REGION
+          skip-when-tags-exist: false
+          create-repo: true
+          dockerfile: Dockerfile
+          tag: $(echo $CIRCLE_SHA1 | cut -c -7)
+          filters:
+            branches:
+              only: feature/first-version

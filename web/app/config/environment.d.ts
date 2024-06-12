@@ -2,7 +2,7 @@
  * Type declarations for
  *    import config from 'my-app/config/environment'
  */
-declare const config: {
+export interface HermesConfig {
   environment: string;
   modulePrefix: string;
   podModulePrefix: string;
@@ -15,14 +15,23 @@ declare const config: {
     docsIndexName: string;
     draftsIndexName: string;
     internalIndexName: string;
+    projectsIndexName: string;
   };
+  createDocsAsUser: boolean;
   featureFlags: Record<string, boolean>;
   google: {
     docFolders: string;
   };
   shortLinkBaseURL: string;
   skipGoogleAuth: boolean;
+  groupApprovals: boolean;
   showEmberAnimatedTools: boolean;
-};
+  supportLinkURL: string;
+  version: string;
+  shortRevision: string;
+  jiraURL: string;
+}
+
+declare const config: HermesConfig;
 
 export default config;

@@ -3,20 +3,38 @@
     data-test-new-features-banner
     @type="inline"
     @color="highlight"
-    @icon="gift"
+    {{! Icon is hidden by CSS; See `dashboard.scss` }}
     @onDismiss={{this.dismiss}}
-    class="mt-6 mb-10"
+    class="mb-10"
     as |A|
   >
-    <A.Title>New editor features.</A.Title>
+    <A.Title>What's new in Hermes</A.Title>
     <A.Description>
-      <ul>
-        <li><strong>Related resources:</strong>
-          Attach content to your document such as other Hermes documents or
-          external links.</li>
-        <li><strong>Shareable drafts:</strong>
-          You can now toggle your document draft visibility to “shareable” and
-          generate a sharable link.</li>
+      <ul class="icon-list">
+        {{#if this.configSvc.config.group_approvals}}
+          <li>
+            <FlightIcon @name="users" />
+            <p>
+              Google Groups can be added as document approvers
+            </p>
+          </li>
+        {{/if}}
+        <li>
+          <FlightIcon @name="swap-horizontal" />
+          <p>
+            Document ownership can be transferred between users
+          </p>
+        </li>
+        <li>
+          <FlightIcon @name="smile" />
+          <p>
+            We've improved owner filtering on the
+            <LinkTo @route="authenticated.documents" class="underlined-link">
+              All Docs
+            </LinkTo>
+            view
+          </p>
+        </li>
       </ul>
     </A.Description>
   </Hds::Alert>
